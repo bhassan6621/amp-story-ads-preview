@@ -13,20 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import {svg} from 'lit-html';
 
-export const redispatchAs = eventType => e => {
-  e.preventDefault();
-  e.stopPropagation();
-  dispatchCustomEvent(e.currentTarget, eventType);
-};
-
-export function dispatchCustomEvent(element, eventType) {
-  element.dispatchEvent(new CustomEvent(eventType, {bubbles: true}));
-}
-
-export function listenAllBound(context, element, handlers) {
-  for (const eventType of Object.keys(handlers)) {
-    const boundHandler = handlers[eventType].bind(context);
-    element.addEventListener(eventType, boundHandler);
-  }
-}
+export const RefreshIcon = () => svg`
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+    <path
+      d="M17.6 6.3A8 8 0 0 0 4 12a8 8 0 0 0 15.7 2h-2a6 6 0 1 1-1.5-6.2L13 11h7V4l-2.4 2.4z"
+    />
+    <path fill="none" d="M0 0h24v24H0z" />
+  </svg>
+`;

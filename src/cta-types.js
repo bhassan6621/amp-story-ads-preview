@@ -13,20 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-export const redispatchAs = eventType => e => {
-  e.preventDefault();
-  e.stopPropagation();
-  dispatchCustomEvent(e.currentTarget, eventType);
+export const CTA_TYPES = {
+  APPLY_NOW: 'Apply Now',
+  BOOK_NOW: 'Book',
+  BUY_TICKETS: 'Buy Tickets',
+  DOWNLOAD: 'Download',
+  EXPLORE: 'Explore',
+  GET_NOW: 'Get Now',
+  INSTALL: 'Install Now',
+  LEARN_MORE: 'Learn More',
+  LISTEN: 'Listen',
+  MORE: 'More',
+  OPEN_APP: 'Open App',
+  ORDER_NOW: 'Order Now',
+  PLAY: 'Play',
+  READ: 'Read',
+  SHOP: 'Shop',
+  SHOW: 'Show',
+  SHOWTIMES: 'Showtimes',
+  SIGN_UP: 'Sign Up',
+  SUBSCRIBE: 'Subscribe Now',
+  USE_APP: 'Use App',
+  VIEW: 'View',
+  WATCH: 'Watch',
+  WATCH_EPISODE: 'Watch Episode',
 };
-
-export function dispatchCustomEvent(element, eventType) {
-  element.dispatchEvent(new CustomEvent(eventType, {bubbles: true}));
-}
-
-export function listenAllBound(context, element, handlers) {
-  for (const eventType of Object.keys(handlers)) {
-    const boundHandler = handlers[eventType].bind(context);
-    element.addEventListener(eventType, boundHandler);
-  }
-}
